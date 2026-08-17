@@ -88,12 +88,10 @@ if __name__ == '__main__':
         p = [0, 0, 2, 5, 5, 3]
 
 
-    train_loader, (train_mean_patch1, train_std_patch1, train_mean_patch2, train_std_patch2,
-                   train_origin_SM), train_dataset = (
+    train_loader, (_, _, _, _, _) = (
         load_dataloader(train_data, sampling_path, batch_size=args.batch_size, mode='train', down=down, pos=p))
 
-    test_loader, (test_mean_patch1, test_std_patch1, test_mean_patch2, test_std_patch2,
-                  test_origin_SM), test_dataset = (
+    test_loader, (_, _, _, _, _) = (
         load_dataloader(test_data, sampling_path, batch_size=args.batch_size, mode='test', down=down, pos=p))
 
     logger.add_info('mask_num', mask_num)
