@@ -57,7 +57,7 @@ if __name__ == '__main__':
         p = [0, 0, 2, 5, 5, 3]
 
     model = Stage2_ViT(
-        window_size=4, pretrained_path=None, img_size=args.img_size, patch_size=args.patch_size,
+        pretrained_path=None, img_size=args.img_size, patch_size=args.patch_size,
         in_chans=args.in_chans, embed_dim=args.embed_dim, depth=args.depth, num_heads=args.num_heads,
         decoder_embed_dim=args.decoder_embed_dim, decoder_depth=args.decoder_depth, decoder_num_heads=args.decoder_num_heads,
         mlp_ratio=args.mlp_ratio)
