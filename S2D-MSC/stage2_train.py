@@ -62,9 +62,9 @@ if __name__ == '__main__':
     ###########  loda stage1 model weights  ############ 
     stage1_model_path = root_path + 'stage1_experiments/experiments_stage1' + '_data' + idx1 + '/' + \
                         'stage1_train_data' + idx1 + '_snr5' + \
-                        '_1e4_batchsize64_epoch50_192_4464_' + str(down) + 'x_' + '_2026_06_29_23_21_15/' + \
+                        '_1e4_batchsize64_epoch50_192_4464_' + str(down) + 'x'/' + \
                         'stage1_train_data' + idx1 + '_snr5' + \
-                        '_1e4_batchsize64_epoch50_192_4464_' + str(down) + 'x_' + '.pth'
+                        '_1e4_batchsize64_epoch50_192_4464_' + str(down) + 'x' + '.pth'
     
     print('stage1_model_path:', stage1_model_path)
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
                 '_batchsize' + str(args.batch_size) + 
                 '_epoch' + str(args.total_epochs) +
                 '_emb192_4464_' + 
-                str(down) + 'x_')
+                str(down) + 'x')
 
     logger = ConfigLogger(base_dir=log_base_path, args=args, log_name=log_name)
 
