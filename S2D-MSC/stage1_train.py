@@ -50,18 +50,10 @@ if __name__ == '__main__':
     else:
         mask_ratio = 0.984
 
-
-    ############# float 1e-5 to 1e5  #############
-    if args.lr == 1e-4:
-        lr_str = '1e4'
-    else:
-        lr_str = str(args.lr).replace('-', '')
-        lr_str = re.sub(r'e0+', 'e', lr_str)
-
     log_base_path = os.path.join(root_path, 'stage1_experiments', 'experiments_stage1_' + ref_data)
-    log_name = ('stage1_train_' + ref_data + '_snr5_' + lr_str +
+    log_name = ('stage1_train_' + ref_data + '_snr5_' +
                 '_batchsize' + str(args.batch_size) + '_epoch' + str(args.total_epochs) +
-                '_192_4464_' + str(down) + 'x_')
+                '_192_4464_' + str(down) + 'x')
 
     logger = ConfigLogger(base_dir=log_base_path, args=args, log_name=log_name)
 
