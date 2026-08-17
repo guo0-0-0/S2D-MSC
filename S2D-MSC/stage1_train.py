@@ -15,12 +15,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, default=2025)
     parser.add_argument('--batch_size', type=int, default=64)
-
     parser.add_argument('--total_epochs', type=int, default=50)
     parser.add_argument('--lr', type=float, default=1e-4)
     parser.add_argument('--weight_decay', type=float, default=0.05)
     parser.add_argument('--warmup_epoch', type=int, default=5)
-
     parser.add_argument('--img_size', type=int, default=32)
     parser.add_argument('--patch_size', type=int, default=1)
     parser.add_argument('--embed_dim', type=int, default=192)
@@ -51,7 +49,7 @@ if __name__ == '__main__':
         mask_ratio = 0.984
 
     log_base_path = os.path.join(root_path, 'stage1_experiments', 'experiments_stage1_' + ref_data)
-    log_name = ('stage1_train_' + ref_data + '_snr5_' +
+    log_name = ('stage1_train_' + ref_data + '_snr5' +
                 '_batchsize' + str(args.batch_size) + '_epoch' + str(args.total_epochs) +
                 '_192_4464_' + str(down) + 'x')
 
@@ -72,7 +70,6 @@ if __name__ == '__main__':
     logger.add_info('test_data_path', test_data_path)
     logger.add_info('sampling_path', sampling_path)
     
-
     train_loader, (train_mean_patch1, train_std_patch1, train_mean_patch2, train_std_patch2,
                    train_origin_SM), train_dataset = (
         load_dataloader(train_data_path, sampling_path,
