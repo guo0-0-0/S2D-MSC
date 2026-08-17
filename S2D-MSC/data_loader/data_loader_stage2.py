@@ -126,7 +126,7 @@ def load_dataloader(root_path, sampling_path, batch_size=16, mode='train', down=
     else:
         data_loader = DataLoader(dataset=data_dataset, batch_size=batch_size, shuffle=False)
 
-    return data_loader, (patch1_mean, patch1_std, patch2_mean, patch2_std, all_SM), data_dataset
+    return data_loader, (patch1_mean, patch1_std, patch2_mean, patch2_std, all_SM)
 
 
 
