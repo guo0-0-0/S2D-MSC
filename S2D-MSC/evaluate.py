@@ -35,12 +35,10 @@ if __name__ == '__main__':
     ref_data = 'pseudo10'
     tgt_data = 'pseudo8'
 
-    down = 4
+    down = 8
 
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-    att_module = 'SGSA'
 
     if down == 4:
         mask_ratio = 0.937
@@ -73,7 +71,7 @@ if __name__ == '__main__':
         load_dataloader(test_data, sampling_path, batch_size=args.batch_size, mode='test', down=down, pos=p))
 
     model_path = root_path + 'stage2_experiments_data' + idx1 + '/stage2_' + str(down) + 'x/' + \
-                            'stage2_train_p10_p8_test_p10_r8_snr5_1e5_batchsize64_epoch10_emb192_4464_8x_2026_07_12_23_31_53/' + \
+                            'stage2_train_p10_p8_test_p10_r8_snr5_1e5_batchsize64_epoch10_emb192_4464_8x/' + \
                             'stage2_train_p10_p8_test_p10_r8_snr5_1e5_batchsize64_epoch10_emb192_4464_8x.pth'
 
     print('load resolution model success from: ', model_path)
@@ -105,9 +103,9 @@ if __name__ == '__main__':
         pre_HR_SM = rearrange(pred_HR_SM, '(f z) c h w -> f c z h w', z=27)
         print('pre_HR_SM shape', pre_HR_SM.shape)
 
-        pre_HR_SM_path = root_path + 'SM_recovery_result/' + \
-                          'MSC_' + idx1 + '_' + idx2 + '_down' + str(down) + '_' + att_module + '.pkl'
-        pickle.dump(pre_HR_SM, open(pre_HR_SM_path, 'wb'))
+        # pre_HR_SM_path = root_path + 'SM_recovery_result/' + \
+        #                   'MSC_' + idx1 + '_' + idx2 + '_down' + str(down) + '.pkl'
+        # pickle.dump(pre_HR_SM, open(pre_HR_SM_path, 'wb'))
 
         origin_HR_SM_patch1 = rearrange(origin_HR_SM_patch1, '(f z) c h w -> f c z h w', z=27)
         origin_HR_SM_patch2 = rearrange(origin_HR_SM_patch2, '(f z) c h w -> f c z h w', z=27)
