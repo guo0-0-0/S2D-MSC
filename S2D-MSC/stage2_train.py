@@ -14,12 +14,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, default=2025)
     parser.add_argument('--batch_size', type=int, default=64)
-
     parser.add_argument('--total_epochs', type=int, default=10)
     parser.add_argument('--lr', type=float, default=1e-5)
     parser.add_argument('--weight_decay', type=float, default=0.05)
     parser.add_argument('--step_epoch', type=int, default=10)
-
     parser.add_argument('--img_size', type=int, default=32)
     parser.add_argument('--patch_size', type=int, default=1)
     parser.add_argument('--in_chans', type=int, default=2)
@@ -44,14 +42,7 @@ if __name__ == '__main__':
 
     os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-
-    ############# float 1e-5 to str 1e5  #############
-    lr_str = str(args.lr).replace('-', '')
-    lr_str = re.sub(r'e0+', 'e', lr_str)
-
-    idx1 = re.findall('\d+', ref_data)[0]
-    idx2 = re.findall('\d+', tgt_data)[0]
-
+    
     mask_num = idx1
 
     if down == 4:
@@ -74,7 +65,7 @@ if __name__ == '__main__':
 
     log_name = ('stage2_' + 'train_p' + idx1 + '_p' + idx2 + 
                 '_test_p' + idx1 + '_r' + idx2 + 
-                '_snr5_' + lr_str + 
+                '_snr5' +
                 '_batchsize' + str(args.batch_size) + 
                 '_epoch' + str(args.total_epochs) +
                 '_emb192_4464_' + 
