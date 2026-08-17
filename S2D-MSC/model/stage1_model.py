@@ -270,7 +270,7 @@ class Siamese_decoder(nn.Module):
             nn.init.constant_(m.bias, 0)
             nn.init.constant_(m.weight, 1.0)
 
-    def forward(self, f1, f2, ids_restore_2):
+    def forward(self, f1, f2, ids_restore_2, SGSA_mask=None):
 
         x_1 = self.decoder_embed(f1)
         x_1 = x_1 + self.decoder_pos_embed
@@ -296,7 +296,7 @@ class Siamese_decoder(nn.Module):
         x_2 = x_2 + self.decoder_pos_embed
 
         for blk in self.decoder_blocks:
-            x_2 = blk(x_1, x_2)
+            x_2 = blk(x_1, x_2, SGSA_mask=SGSA_mask)
 
         x = self.decoder_norm(x_2)
 
