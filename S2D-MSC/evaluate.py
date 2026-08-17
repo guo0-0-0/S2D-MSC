@@ -66,7 +66,7 @@ if __name__ == '__main__':
     _, test_data, _, _, _, _ = concat_train_test_data(root_path, idx1, idx2, down)
         
     test_loader, (test_mean_patch1, test_std_patch1, test_mean_patch2, test_std_patch2,
-                  test_origin_SM), test_dataset = (
+                  test_origin_SM) = (
         load_dataloader(test_data, sampling_path, batch_size=args.batch_size, mode='test', down=down, pos=p))
 
     model_path = root_path + 'stage2_experiments_data' + idx1 + '/stage2_' + str(down) + 'x/' + \
