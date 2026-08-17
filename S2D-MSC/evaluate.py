@@ -14,7 +14,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, default=2025)
     parser.add_argument('--batch_size', type=int, default=64)
-
     parser.add_argument('--img_size', type=int, default=32)
     parser.add_argument('--patch_size', type=int, default=1)
     parser.add_argument('--in_chans', type=int, default=2)
