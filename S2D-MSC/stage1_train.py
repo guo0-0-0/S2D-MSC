@@ -70,14 +70,10 @@ if __name__ == '__main__':
     logger.add_info('test_data_path', test_data_path)
     logger.add_info('sampling_path', sampling_path)
     
-    train_loader, (train_mean_patch1, train_std_patch1, train_mean_patch2, train_std_patch2,
-                   train_origin_SM), train_dataset = (
-        load_dataloader(train_data_path, sampling_path,
+    train_loader = (load_dataloader(train_data_path, sampling_path,
                         batch_size=args.batch_size, mode='train',down=down, pos=p))
 
-    test_loader, (test_mean_patch1, test_std_patch1, test_mean_patch2, test_std_patch2,
-                  test_origin_SM), test_dataset = (
-        load_dataloader(test_data_path, sampling_path,
+    test_loader = (load_dataloader(test_data_path, sampling_path,
                         batch_size=args.batch_size, mode='test', down=down, pos=p))
 
     model = SiameseAutoencoderViT(
